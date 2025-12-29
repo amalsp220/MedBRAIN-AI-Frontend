@@ -15,8 +15,7 @@ function formatText(text) {
     text = text.replace(/\*\*([^*]+)\*\*/g, '$1');
     
     // Add line breaks after numbered items (1. 2. 3. etc.)
-    text = text.replace(/(\d+\.\s[^\n]+)/g, '$1\n\n');
-    
+    text = text.replace(/(\d+\.\s[^\n]+)/g, '$1\n');    
     // Add line breaks after colons followed by text
     text = text.replace(/:\s+/g, ':\n');
     
