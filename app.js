@@ -1,7 +1,7 @@
 // MedBRAIN AI - Frontend JavaScript
-// Connects to Hugging Face Space API
+// Connects to Hugging Face Space API using Gradio client
 
-const API_URL = "https://amalsp-medbrain-ai.hf.space/api/predict";
+const API_BASE = "https://amalsp-medbrain-ai.hf.space";
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
@@ -58,7 +58,7 @@ function removeLoading() {
     }
 }
 
-// Send message to API
+// Send message to API using Gradio's two-step process
 async function sendMessage() {
     const message = userInput.value.trim();
     
@@ -73,7 +73,8 @@ async function sendMessage() {
     addLoading();
     
     try {
-        const response = await fetch(API_URL, {
+        // Step 1: POST request to initiate prediction
+        const callResponse = await fetch(`${API_BASE}/gradio_api/call/chat`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -83,24 +84,42 @@ async function sendMessage() {
             })
         });
         
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        if (!callResponse.ok) {
+            throw new Error('Failed to initiate API call');
         }
         
-        const result = await response.json();
-        const botResponse = result.data[0];
+        const callData = await callResponse.json();
+        const eventId = callData.event_id;
         
-        removeLoading();
-        addMessage(botResponse);
+        // Step 2: GET request to retrieve the result using Server-Sent Events
+        const eventSource = new EventSource(`${API_BASE}/gradio_api/call/chat/${eventId}`);
         
-        // Update conversation history
-        conversationHistory.push([message, botResponse]);
+        eventSource.addEventListener('complete', (event) => {
+            const data = JSON.parse(event.data);
+            const botResponse = data[0];
+            
+            removeLoading();
+            addMessage(botResponse);
+            
+            // Update conversation history
+            conversationHistory.push([message, botResponse]);
+            
+            eventSource.close();
+            sendBtn.disabled = false;
+        });
+        
+        eventSource.addEventListener('error', (event) => {
+            console.error('EventSource error:', event);
+            removeLoading();
+            addMessage('Sorry, I encountered an error. Please try again.');
+            eventSource.close();
+            sendBtn.disabled = false;
+        });
         
     } catch (error) {
         console.error('Error:', error);
         removeLoading();
         addMessage('Sorry, I encountered an error. Please try again or check if the service is available.');
-    } finally {
         sendBtn.disabled = false;
     }
 }
@@ -121,4 +140,4 @@ userInput.addEventListener('keypress', (e) => {
 
 // Initial greeting
 console.log('MedBRAIN AI Frontend loaded successfully');
-console.log('Connected to:', API_URL);
+console.log('Connected to:', API_BASE);
