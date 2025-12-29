@@ -9,6 +9,23 @@ const sendBtn = document.getElementById('sendBtn');
 // Store conversation history
 let conversationHistory = [];
 
+// Format text: remove markdown, add proper line breaks and spacing
+function formatText(text) {
+    // Remove markdown bold formatting (**text**)
+    text = text.replace(/\*\*([^*]+)\*\*/g, '$1');
+    
+    // Add line breaks after numbered items (1. 2. 3. etc.)
+    text = text.replace(/(\d+\.\s[^\n]+)/g, '$1\n\n');
+    
+    // Add line breaks after colons followed by text
+    text = text.replace(/:\s+/g, ':\n');
+    
+    // Convert newlines to <br> tags
+    text = text.replace(/\n/g, '<br>');
+    
+    return text;
+}
+
 // Add message to chat
 function addMessage(content, isUser = false) {
     const messageDiv = document.createElement('div');
@@ -20,8 +37,7 @@ function addMessage(content, isUser = false) {
     
     const messageContent = document.createElement('div');
     messageContent.className = 'message-content';
-    messageContent.innerHTML = `<p>${content}</p>`;
-    
+    messageContent.innerHTML = `<p>${formatText(content)}</p>`;    
     messageDiv.appendChild(avatar);
     messageDiv.appendChild(messageContent);
     chatMessages.appendChild(messageDiv);
