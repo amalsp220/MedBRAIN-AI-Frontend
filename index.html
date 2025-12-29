@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedBRAIN AI - Medical Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>MedBRAIN AI</h1>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Your Intelligent Medical Assistant</h2>
+                <p>Get instant, accurate medical information powered by advanced AI technology</p>
+                <div class="hero-features">
+                    <div class="feature-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>HIPAA Compliant</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Available</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Evidence-Based</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Interface -->
+    <section class="chat-section">
+        <div class="container">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        <span>AI Assistant Online</span>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hello! I'm MedBRAIN AI, your medical information assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-questions">
+                    <h3>Example Questions:</h3>
+                    <div class="example-chips">
+                        <button class="chip" onclick="sendExample('What are the symptoms of diabetes?')">Diabetes Symptoms</button>
+                        <button class="chip" onclick="sendExample('How can I manage high blood pressure?')">Blood Pressure</button>
+                        <button class="chip" onclick="sendExample('What are the causes of headaches?')">Headaches</button>
+                        <button class="chip" onclick="sendExample('Explain the difference between bacteria and viruses')">Bacteria vs Viruses</button>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Ask me about medical topics (for education only)..." />
+                    <button id="sendBtn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Medical Expertise</h3>
+                    <p>Access comprehensive medical knowledge backed by clinical research</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Response</h3>
+                    <p>Get immediate answers to your medical questions 24/7</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>Your conversations are private and secure</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Easy to Understand</h3>
+                    <p>Complex medical information explained in simple terms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="disclaimer">
+        <div class="container">
+            <div class="disclaimer-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>Important Disclaimer:</strong> MedBRAIN AI provides educational information only, not medical advice. Always consult with qualified healthcare professionals for diagnosis and treatment. In emergencies, call emergency services immediately.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 MedBRAIN AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="https://github.com/amalsp220/MedBRAIN-AI-Frontend" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
