@@ -462,4 +462,78 @@ footer {
         flex-direction: column;
         text-align: center;
     }
+
+    /* Chat Interface Improvements */
+.timestamp {
+    font-size: 0.7em;
+    color: #999;
+    margin-left: 8px;
+}
+
+.copy-btn {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-left: 8px;
+    transition: background 0.3s;
+}
+
+.copy-btn:hover {
+    background: #1E40AF;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #10B981;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#charCounter {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 5px;
+    display: block;
+}
+
+.clear-chat-btn {
+    background: #EF4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.3s;
+    margin-left: 15px;
+}
+
+.clear-chat-btn:hover {
+    background: #DC2626;
+}
+
+.clear-chat-btn i {
+    margin-right: 5px;
+}
 }
