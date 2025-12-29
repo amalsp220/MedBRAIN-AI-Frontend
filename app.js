@@ -9,13 +9,47 @@ const sendBtn = document.getElementById('sendBtn');
 // Store conversation history
 let conversationHistory = [];
 
+// Get current timestamp
+function getTimestamp() {
+    const now = new Date();
+    return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+}
+
+// Copy text to clipboard
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        // Show copied notification
+        showNotification('Copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
+}
+
+// Show notification
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
+}
+
 // Format text: remove markdown, add proper line breaks and spacing
 function formatText(text) {
     // Remove markdown bold formatting (**text**)
     text = text.replace(/\*\*([^*]+)\*\*/g, '$1');
     
     // Add line breaks after numbered items (1. 2. 3. etc.)
-    text = text.replace(/(\d+\.\s[^\n]+)/g, '$1\n');    
+    text = text.replace(/(\d+\.\s[^\n]+)/g, '$1\n');
+    
     // Add line breaks after colons followed by text
     text = text.replace(/:\s+/g, ':\n');
     
@@ -25,7 +59,7 @@ function formatText(text) {
     return text;
 }
 
-// Add message to chat
+// Add message to chat with timestamp and copy button
 function addMessage(content, isUser = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
@@ -36,7 +70,27 @@ function addMessage(content, isUser = false) {
     
     const messageContent = document.createElement('div');
     messageContent.className = 'message-content';
-    messageContent.innerHTML = `<p>${formatText(content)}</p>`;    
+    
+    const textContent = document.createElement('p');
+    textContent.innerHTML = `${formatText(content)}`;
+    messageContent.appendChild(textContent);
+    
+    // Add timestamp
+    const timestamp = document.createElement('span');
+    timestamp.className = 'message-timestamp';
+    timestamp.textContent = getTimestamp();
+    messageContent.appendChild(timestamp);
+    
+    // Add copy button for bot messages
+    if (!isUser) {
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+        copyBtn.title = 'Copy message';
+        copyBtn.onclick = () => copyToClipboard(content);
+        messageContent.appendChild(copyBtn);
+    }
+    
     messageDiv.appendChild(avatar);
     messageDiv.appendChild(messageContent);
     chatMessages.appendChild(messageDiv);
@@ -73,6 +127,36 @@ function removeLoading() {
     }
 }
 
+// Clear chat function
+function clearChat() {
+    if (confirm('Are you sure you want to clear the chat history?')) {
+        // Keep only the initial greeting
+        const messages = chatMessages.querySelectorAll('.message');
+        messages.forEach((message, index) => {
+            if (index > 0) { // Keep first message (greeting)
+                message.remove();
+            }
+        });
+        conversationHistory = [];
+        showNotification('Chat cleared!');
+    }
+}
+
+// Update character counter
+function updateCharCounter() {
+    const maxLength = 500;
+    const currentLength = userInput.value.length;
+    const counter = document.getElementById('charCounter');
+    if (counter) {
+        counter.textContent = `${currentLength}/${maxLength}`;
+        if (currentLength > maxLength * 0.9) {
+            counter.style.color = '#e74c3c';
+        } else {
+            counter.style.color = '#7f8c8d';
+        }
+    }
+}
+
 // Send message to API using Gradio's two-step process
 async function sendMessage() {
     const message = userInput.value.trim();
@@ -82,6 +166,7 @@ async function sendMessage() {
     // Add user message
     addMessage(message, true);
     userInput.value = '';
+    updateCharCounter();
     
     // Disable send button
     sendBtn.disabled = true;
@@ -152,6 +237,16 @@ userInput.addEventListener('keypress', (e) => {
         sendMessage();
     }
 });
+userInput.addEventListener('input', updateCharCounter);
+
+// Add clear chat button listener
+const clearChatBtn = document.getElementById('clearChatBtn');
+if (clearChatBtn) {
+    clearChatBtn.addEventListener('click', clearChat);
+}
+
+// Initialize character counter
+updateCharCounter();
 
 // Initial greeting
 console.log('MedBRAIN AI Frontend loaded successfully');
