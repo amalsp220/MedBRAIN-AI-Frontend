@@ -515,6 +515,9 @@ footer {
     color: #7f8c8d;
     margin-top: 5px;
     display: block;
+        text-align: left;
+    width: 100%;
+    max-width: 650px;
 }
 
 .clear-chat-btn {
@@ -558,7 +561,8 @@ footer {
     }
 }
 
-/* Mobile Devices (up to 768px) */
+513
+    
 @media screen and (max-width: 768px) {
     /* Header & Navigation */
     header {
@@ -889,6 +893,228 @@ footer {
     #sendBtn:active {
         transform: scale(0.95);
         opacity: 0.8;
+    }
+}
+
+    /* ============================================
+   PROFESSIONAL ALIGNMENT FIXES
+   Perfect mobile & PC alignment
+   ============================================ */
+
+/* Fix header .container flex alignment */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Ensure nav wraps properly with Clear Chat button */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Character counter - proper alignment below input */
+.chat-input {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.chat-input > div {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+#charCounter {
+    order: 2;
+    align-self: flex-start;
+    padding-left: 0;
+}
+
+/* Message alignment improvements */
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message.bot-message {
+    align-items: flex-start;
+}
+
+.message.user-message {
+    align-items: flex-end;
+}
+
+.message-content {
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Timestamp and copy button alignment */
+.message-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Feature badges alignment */
+.features-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Example chips alignment */
+.example-chips {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Mobile-specific perfect alignment */
+@media screen and (max-width: 768px) {
+    /* Header perfect alignment */
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    /* Logo and nav stacking */
+    .logo {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    nav {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    /* Clear Chat button mobile alignment */
+    .clear-chat-btn {
+        display: block;
+        width: auto;
+        margin: 5px auto 0;
+    }
+    
+    /* Chat input perfect mobile alignment */
+    .chat-input {
+        padding: 15px;
+    }
+    
+    .chat-input > div {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    #userInput {
+        flex: 1;
+    }
+    
+    #sendBtn {
+        flex-shrink: 0;
+    }
+    
+    #charCounter {
+        width: 100%;
+        padding: 5px 0 0 0;
+        text-align: left;
+    }
+    
+    /* Message perfect alignment */
+    .message {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .message.bot-message {
+        margin-right: auto;
+    }
+    
+    .message.user-message {
+        margin-left: auto;
+    }
+    
+    /* Features badges mobile alignment */
+    .features-preview {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .feature-badge {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+    
+    /* Example chips mobile alignment */
+    .example-chips {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .chip {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+/* Small mobile perfect alignment */
+@media screen and (max-width: 480px) {
+    header .container {
+        padding: 10px;
+    }
+    
+    .logo h1 {
+        font-size: 1.2em;
+    }
+    
+    nav {
+        gap: 8px;
+    }
+    
+    nav a {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+    
+    .clear-chat-btn {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+    
+    .chat-input {
+        padding: 12px;
+    }
+    
+    #userInput {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    #sendBtn {
+        width: 44px;
+        height: 44px;
+    }
+    
+    #charCounter {
+        font-size: 11px;
     }
 }
 }
