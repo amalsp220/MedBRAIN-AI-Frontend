@@ -5,6 +5,7 @@ const API_BASE = "https://amalsp-medbrain-ai.hf.space";
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
+const voiceBtn = document.getElementById('voiceBtn');
 
 // Store conversation history
 let conversationHistory = [];
@@ -250,4 +251,73 @@ updateCharCounter();
 
 // Initial greeting
 console.log('MedBRAIN AI Frontend loaded successfully');
+
+// Voice Recognition Feature
+let recognition = null;
+let isListening = false;
+
+// Check if browser supports Web Speech API
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+    
+    recognition.onstart = () => {
+        isListening = true;
+        voiceBtn.classList.add('listening');
+        voiceBtn.title = 'Listening...';
+        console.log('Voice recognition started');
+    };
+    
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        userInput.value = transcript;
+        console.log('Recognized:', transcript);
+        updateCharCounter();
+    };
+    
+    recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        isListening = false;
+        voiceBtn.classList.remove('listening');
+        voiceBtn.title = 'Voice Input';
+        
+        let errorMessage = 'Voice recognition error';
+        if (event.error === 'no-speech') {
+            errorMessage = 'No speech detected. Please try again.';
+        } else if (event.error === 'not-allowed') {
+            errorMessage = 'Microphone access denied. Please allow microphone access.';
+        }
+        alert(errorMessage);
+    };
+    
+    recognition.onend = () => {
+        isListening = false;
+        voiceBtn.classList.remove('listening');
+        voiceBtn.title = 'Voice Input';
+        console.log('Voice recognition ended');
+    };
+    
+    // Voice button click handler
+    voiceBtn.addEventListener('click', () => {
+        if (isListening) {
+            recognition.stop();
+        } else {
+            try {
+                recognition.start();
+            } catch (error) {
+                console.error('Error starting recognition:', error);
+                alert('Could not start voice recognition. Please try again.');
+            }
+        }
+    });
+} else {
+    // Browser doesn't support Speech Recognition
+    voiceBtn.disabled = true;
+    voiceBtn.title = 'Voice input not supported in this browser';
+    console.warn('Speech Recognition not supported in this browser');
+}
 console.log('Connected to:', API_BASE);
