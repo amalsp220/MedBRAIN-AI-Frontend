@@ -4,7 +4,6 @@
 const API_BASE = "https://amalsp-medbrain-ai.hf.space";
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
-const charCount = document.getElementById('charCount');
 const sendBtn = document.getElementById('sendBtn');
 const voiceBtn = document.getElementById('voiceBtn');
 
