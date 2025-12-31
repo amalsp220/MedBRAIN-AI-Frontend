@@ -143,9 +143,9 @@ nav a:hover {
     border-radius: 20px;
     box-shadow: var(--shadow-lg);
     overflow: hidden;
-    max-width: 900px;}
+    max-width: 900px;
     margin: 0 auto;
-
+    }
 .chat-header {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     padding: 1.5rem;
