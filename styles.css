@@ -1204,4 +1204,36 @@ nav {
         font-size: 11px;
     }
 }
+
+    /* Enhanced Animations and Transitions */
+
+    .example-btn {
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+    .example-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+    #sendBtn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+    .chat-bubble {
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+    @keyframes fadeInUp {
+            from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+            to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+        }
 }
