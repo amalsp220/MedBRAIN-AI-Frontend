@@ -244,6 +244,7 @@ nav a:hover {
     margin-bottom: 1rem;/* Premium Blue Boxes with White Text */
 .examples-grid {
 display: flex;
+        flex-direction: row;
         justify-content: center;
         gap: 0.5rem;
         flex-wrap: nowrap;
