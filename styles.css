@@ -829,10 +829,11 @@ footer {
     
     .example-chips {
         gap: 12px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            overflow-x: auto;
     }
     
     .chip {
