@@ -4,6 +4,7 @@
 const API_BASE = "https://amalsp-medbrain-ai.hf.space";
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
+const charCount = document.getElementById('charCount');
 const sendBtn = document.getElementById('sendBtn');
 const voiceBtn = document.getElementById('voiceBtn');
 
@@ -237,6 +238,12 @@ userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         sendMessage();
     }
+});
+
+// Update character counter
+userInput.addEventListener('input', () => {
+    const length = userInput.value.length;
+    charCount.textContent = `${length}/500`;
 });
 userInput.addEventListener('input', updateCharCounter);
 
