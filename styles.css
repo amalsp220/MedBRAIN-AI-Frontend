@@ -251,10 +251,9 @@ display: flex;
 }
 
 .example-btn {
-    background: var(--white);
-    color: var(--gray-900);    border: none;
-    font-size: 0.85rem;    cursor: pointer;
-    padding: 0.5rem 0.75rem;    border-radius: 6px;    padding: 0.5rem 0.75rem;    display: flex;    align-items: center;
+    background: var(--primary-blue);    color: var(--gray-900);    border: none;
+    color: var(--white);    padding: 0.5rem 0.75rem;    border-radius: 6px;    padding: 0.5rem 0.75rem;    display: flex;    align-items: center;
+        border: none;
         flex-shrink: 0;
         white-space: nowrap;
     justify-content: center;
