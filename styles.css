@@ -143,8 +143,8 @@ nav a:hover {
     border-radius: 20px;
     box-shadow: var(--shadow-lg);
     overflow: hidden;
-    max-width: 100%;    margin: 0 auto;
-}
+    max-width: 900px;}
+    margin: 0 auto;
 
 .chat-header {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -1587,21 +1587,3 @@ nav a.active::after {
                 }
     }
 
-/* Desktop/PC View - Wide Screen Layout */
-@media (min-width: 769px) {
-    .chat-main {
-        max-width: none !important;
-        width: 100% !important;
-    }
-    
-    .chat-main .container {
-        max-width: none !important;
-        width: 100% !important;
-            }
-    
-    .chat-container {
-        max-width: none !important;
-        width: 100% !important;
-    }
-    }
-}
