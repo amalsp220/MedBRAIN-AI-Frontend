@@ -1,9 +1,11 @@
 /* Medical Theme - Blue & White Color Palette */
 :root {
-    --primary-blue: #2563EB;
-    --secondary-blue: #3B82F6;
-    --light-blue: #DBEAFE;
-    --dark-blue: #1E40AF;
+    --primary-blue: #58aaf3; 
+        --secondary-blue: #86bdf5;
+        --light-blue: #a9cdfb;
+        --lighter-blue: #cedeff;
+        --lightest-blue: #f5f6fb;
+    
     --white: #FFFFFF;
     --gray-50: #F9FAFB;
 
