@@ -1327,6 +1327,9 @@ nav {
 .chat-main {
     flex: 1;
     display: flex;
+    .chat-main .container {
+            max-width: 100%;
+        
     flex-direction: column;
     height: calc(100vh - 70px);
     overflow: hidden;
@@ -1585,3 +1588,16 @@ nav a.active::after {
                     height: 54px;
                 }
     }
+
+/* Desktop/PC View - Wide Screen Layout */
+@media (min-width: 769px) {
+    .chat-main {
+        max-width: none !important;
+        width: 100% !important;
+    }
+    
+    .chat-main .container {
+        max-width: none !important;
+        width: 100% !important;
+    }
+}
