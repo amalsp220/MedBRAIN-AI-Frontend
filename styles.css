@@ -1325,10 +1325,8 @@ nav {
 
 /* Chat Main Container (Full Screen) */
 .chat-main {
-.chat-main {
     flex: 1;
     display: flex;
-    flex-direction: column;
     height: calc(100vh - 70px);
     overflow: hidden;
     width: 100%;
