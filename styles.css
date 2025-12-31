@@ -1,3 +1,4 @@
+145
 /* Medical Theme - Blue & White Color Palette */
 :root {
     --primary-blue: #2563EB;
@@ -142,8 +143,7 @@ nav a:hover {
     border-radius: 20px;
     box-shadow: var(--shadow-lg);
     overflow: hidden;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 100%;    margin: 0 auto;
 }
 
 .chat-header {
