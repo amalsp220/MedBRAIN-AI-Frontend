@@ -1,4 +1,15 @@
 145
+
+/* Text Selection Styling */
+::selection {
+    background-color: #2563EB;
+    color: #FFFFFF;
+}
+
+::-moz-selection {
+    background-color: #2563EB;
+    color: #FFFFFF;
+}
 /* Medical Theme - Blue & White Color Palette */
 :root {
     --primary-blue: #2563EB;
