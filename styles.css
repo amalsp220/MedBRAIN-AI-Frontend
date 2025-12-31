@@ -1325,25 +1325,23 @@ nav {
 
 /* Chat Main Container (Full Screen) */
 .chat-main {
+.chat-main {
     flex: 1;
     display: flex;
-    .chat-main .container {
-            max-width: 100%;
-        
     flex-direction: column;
     height: calc(100vh - 70px);
     overflow: hidden;
+    width: 100%;
 }
 
-    
+.chat-main .container {
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
     display: flex;
-    flex-direction: column70px
+    flex-direction: column;
     height: 100%;
     padding: 2rem 1rem;
-}
-
 .chat-messages {
     flex: 1;
     overflow-y: auto;
