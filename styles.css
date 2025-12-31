@@ -859,7 +859,8 @@ footer {
         }
     
     /* Chat Input */
-    .chat-input {
+    1330
+    
         padding: 12px;
         gap: 8px;
     }
@@ -1331,8 +1332,7 @@ nav {
     overflow: hidden;
 }
 
-.chat-container {
-    max-width: 1200px;
+    height: calc(100vh - 160px);    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -1565,3 +1565,23 @@ nav a.active::after {
     }
 }
 }
+
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+        .chat-input {
+                    flex-direction: row;
+                    gap: 0.5rem;
+                }
+
+        .input-wrapper {
+                    flex: 1;
+                    min-width: 0;
+                }
+
+        #sendBtn {
+                    margin-left: 0;
+                    flex-shrink: 0;
+                    width: 54px;
+                    height: 54px;
+                }
+    }
