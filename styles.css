@@ -87,7 +87,7 @@ header .container {
 }
 
 .logo i {
-    font-size: 2rem;
+    font-size: 3.5rem;
 }
 
 .logo h1 {
@@ -107,10 +107,26 @@ nav a {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
+        position: relative;
 }
 
 nav a:hover {
     color: var(--primary-blue);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #58aaf3;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 /* Hero Section */
