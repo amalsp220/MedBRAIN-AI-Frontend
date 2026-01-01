@@ -4,6 +4,30 @@
     --light-blue: #a9cdfb;
     --lighter-blue: #cedeff;
     --lightest-blue: #f5f6fb;
+
+    /* Dark Mode Colors */
+[data-theme="dark"] {
+    --primary-blue: #4a8fd8;
+    --secondary-blue: #6ba3e0;
+    --light-blue: #89b8e8;
+    --lighter-blue: #a8cdf0;
+    --lightest-blue: #1a1f2e;
+    
+    --white: #1a1f2e;
+    --gray-50: #2a2f3e;
+    --gray-100: #3a3f4e;
+    --gray-200: #4a4f5e;
+    --gray-300: #5a5f6e;
+    --gray-600: #9a9fae;
+    --gray-700: #aaafc4;
+    --gray-900: #e1e6f0;
+    
+    --bg-primary: #1a1f2e;
+    --bg-secondary: #2a2f3e;
+    --text-primary: #e1e6f0;
+    --text-secondary: #9a9fae;
+    --border-color: #3a3f4e;
+}
     
     --white: #FFFFFF;
     --gray-50: #F9FAFB;
@@ -1715,5 +1739,44 @@ html {
 /* Page load animation */
 body {
     animation: fadeIn 0.6s ease-out;
+
+    /* ==================== THEME TOGGLE BUTTON ==================== */
+.theme-toggle-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--light-blue);
+    transform: scale(1.1) rotate(20deg);
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+    background: var(--gray-100);
+}
+
+/* ==================== DARK MODE OVERRIDES ==================== */
+[data-theme="dark"] body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .container,
+[data-theme="dark"] .chat-container,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
 }
 }
