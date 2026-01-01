@@ -1,9 +1,7 @@
 /* Medical Theme - Blue & White Color Palette */
 :root {
-    --primary-blue: #58aaf3;--secondary-blue: #86bdf5;
-    --light-blue: #a9cdfb;
-    --lighter-blue: #cedeff;
-    --lightest-blue: #f5f6fb;
+    --primary-blue: #58aaf3; --secondary-blue: #86bdf5;    --light-blue: #a9cdfb;
+    --light-blue: #a9cdfb;    --lightest-blue: #f5f6fb;
 
     /* Dark Mode Colors */
 [data-theme="dark"] {
@@ -564,8 +562,7 @@ display: flex;
 
 /* Footer */
 footer {
-    background: var(--dark-blue);
-    color: var(--white);
+    background: #58aaf3;    color: var(--white);
     padding: 2rem 0;
 }
 
@@ -624,6 +621,7 @@ footer {
     
     .chat-messages {
         height: 300px;
+            background: #58aaf3;
     }
     
     .message-content {
