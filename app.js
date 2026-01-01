@@ -163,6 +163,12 @@ async function sendMessage() {
     const message = userInput.value.trim();
     
     if (!message) return;
+
+        // Hide welcome container when first message is sent
+    const welcomeContainer = document.getElementById('welcomeContainer');
+    if (welcomeContainer) {
+        welcomeContainer.style.display = 'none';
+    }
     
     // Add user message
     addMessage(message, true);
@@ -237,6 +243,19 @@ userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         sendMessage();
     }
+
+    // Quick question buttons
+document.querySelectorAll('.quick-question-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const question = this.dataset.question;
+        sendExampleQuestion(question);
+        // Hide welcome container
+        const welcomeContainer = document.getElementById('welcomeContainer');
+        if (welcomeContainer) {
+            welcomeContainer.style.display = 'none';
+        }
+    });
+});
 });
 
 // Update character counter
