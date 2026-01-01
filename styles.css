@@ -892,6 +892,12 @@ footer {
         min-height: 45px;
     }
     
+#userInput:focus {
+    border: 2px solid #58aaf3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(88, 170, 243, 0.1);
+}
+    
     #charCounter {
         font-size: 11px;
         margin-top: 4px;
@@ -1776,5 +1782,51 @@ body {
     color: var(--text-primary);
     border-color: var(--border-color);
 }
+}
+    
+/* ==================== HIGH PRIORITY UI ENHANCEMENTS ==================== */
+
+/* Clear Chat Button - Blue Theme */
+#clearChatBtn {
+    background: #58aaf3 !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#clearChatBtn:hover {
+    background: #86bdf5 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(88, 170, 243, 0.3);
+}
+
+/* Send Button - Enhanced Blue Theme */
+#sendBtn {
+    background: #58aaf3 !important;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+#sendBtn:hover {
+    background: #86bdf5 !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(88, 170, 243, 0.4);
+}
+
+/* Voice Button - Blue Theme */
+#voiceBtn {
+    color: #58aaf3;
+    transition: all 0.3s ease;
+}
+
+#voiceBtn:hover {
+    background: rgba(88, 170, 243, 0.1) !important;
+    color: #86bdf5;
+    transform: scale(1.1);
 }
 }
