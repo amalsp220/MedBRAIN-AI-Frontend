@@ -20,11 +20,6 @@
                 <a href="about.html">About</a>
                 <a href="features.html">Features</a>
                 <button id="clearChatBtn" class="clear-chat-btn" title="Clear conversation">
-                                    <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle dark/light mode">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-                    <i class="fas fa-trash-alt"></i>
-                </button>
             </nav>
         </div>
     </header>
@@ -64,35 +59,5 @@
     </footer>
 
     <script src="app.js"></script>
-        <script>
-        // Theme Toggle Functionality
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('themeIcon');
-        const htmlElement = document.documentElement;
-        
-        // Check for saved theme preference or default to 'light'
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        htmlElement.setAttribute('data-theme', currentTheme);
-        updateThemeIcon(currentTheme);
-        
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-        
-        function updateThemeIcon(theme) {
-            if (theme === 'dark') {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        }
-    </script>
 </body>
 </html>
