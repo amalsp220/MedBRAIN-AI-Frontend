@@ -905,8 +905,21 @@ footer {
     #userInput {
         font-size: 0.95em;
         padding: 12px;
-        min-height: 45px;
+            min-height: 55px;
     }
+
+    /* Character Counter */
+    #charCounter {
+            font-size: 0.75em;
+            color: #666;
+            text-align: right;
+            padding: 4px 12px;
+            margin-top: -8px;
+        }
+
+    #charCounter.warning {
+            color: #ff6b6b;
+        }
     
 #userInput:focus {
     border: 2px solid #58aaf3;
