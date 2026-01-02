@@ -6,6 +6,7 @@ const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
 const voiceBtn = document.getElementById('voiceBtn');
+const charCounter = document.getElementById('charCounter');
 
 // Store conversation history
 let conversationHistory = [];
@@ -345,4 +346,25 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     voiceBtn.title = 'Voice input not supported in this browser';
     console.warn('Speech Recognition not supported in this browser');
 }
+
+// Character counter for input field
+const MAX_CHARS = 500;
+
+userInput.addEventListener('input', () => {
+        const currentLength = userInput.value.length;
+        charCounter.textContent = `${currentLength}/${MAX_CHARS}`;
+
+        // Add warning class if approaching limit (90%)
+        if (currentLength >= MAX_CHARS * 0.9) {
+                    charCounter.classList.add('warning');
+                } else {
+                    charCounter.classList.remove('warning');
+                }
+
+        // Enforce max length
+        if (currentLength > MAX_CHARS) {
+                    userInput.value = userInput.value.substring(0, MAX_CHARS);
+                    charCounter.textContent = `${MAX_CHARS}/${MAX_CHARS}`;
+                }
+    });
 console.log('Connected to:', API_BASE);
