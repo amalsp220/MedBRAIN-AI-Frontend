@@ -923,7 +923,36 @@ footer {
         width: 45px;
         height: 45px;
         font-size: 1.1em;
+            background: #58aaf3;
+            color: white;
+            transition: all 0.3s ease;
     }
+
+    #sendBtn:hover {
+            background: #86bdf5;
+            box-shadow: 0 0 20px rgba(88, 170, 243, 0.6);
+            transform: scale(1.05);
+        }
+
+    #sendBtn.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+    #sendBtn.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+    @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     
     /* Features Grid */
     .features-grid {
@@ -1842,7 +1871,25 @@ body {
 
 #voiceBtn:hover {
     background: rgba(88, 170, 243, 0.1) !important;
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(88, 170, 243, 0.5);
+    
     color: #86bdf5;
+
+    #voiceBtn.recording {
+            background: #58aaf3 !important;
+            color: white !important;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+    @keyframes pulse {
+            0%, 100% {
+                        box-shadow: 0 0 0 0 rgba(88, 170, 243, 0.7);
+                    }
+            50% {
+                        box-shadow: 0 0 0 10px rgba(88, 170, 243, 0);
+                    }
+        }
     transform: scale(1.1);
 }
 }
