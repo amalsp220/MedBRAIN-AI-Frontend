@@ -15,7 +15,7 @@ function addMessage(text, isUser = false) {
     
     const messageContent = document.createElement('div');
     messageContent.className = 'message-content';
-    messageContent.innerHTML = text.replace(/\n/g, '<br>');    
+        messageContent.innerHTML = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     messageDiv.appendChild(messageContent);
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
