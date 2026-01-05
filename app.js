@@ -130,6 +130,20 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
+    // Add event listeners to suggestion pills
+    document.querySelectorAll('.suggestion-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+            const text = this.textContent.trim();
+            if (text === 'Symptoms of diabetes') {
+                sendSuggestion('What are the symptoms of diabetes?');
+            } else if (text === 'Blood pressure tips') {
+                sendSuggestion('How to manage high blood pressure?');
+            } else if (text === 'Headache causes') {
+                sendSuggestion('Common causes of headaches');
+            }
+        });
+    });
+
 // Make functions globally accessible for inline onclick handlers
 window.sendMessage = sendMessage;
 window.sendSuggestion = sendSuggestion;
