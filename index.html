@@ -3,61 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedBRAIN AI - Medical Assistant</title>
+    <title>MedBRAIN AI - Intelligent Medical Assistant</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Minimal Header with Navigation -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-brain"></i>
-                <h1>MedBRAIN AI</h1>
-            </div>
-            <nav>
-                <a href="index.html">Chat</a>
-                <a href="about.html">About</a>
-                <a href="features.html">Features</a>
-                <button id="clearChatBtn" class="clear-chat-btn" title="Clear conversation">
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Chat Interface (Full Screen) -->
-    <main class="chat-main">
-        <div class="chat-container">
-            <!-- Chat Messages Area -->
-            <div id="chatMessages" class="chat-messages"></div>
-            
-            <!-- Input Area (Fixed at Bottom) -->
-            <div class="chat-input-container">
-
-                
-                <div class="chat-input">
-                    <div class="input-wrapper">
-                        <input type="text" id="userInput" placeholder="Ask me about medical topics (for education only)..." maxlength="500">
-                        <button id="voiceBtn" class="voice-btn" title="Voice Input">
-                            <i class="fas fa-microphone"></i>
-                        </button>
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="brain-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
-                                    <div id="charCounter">0/500</div>
-                                                        <button id="sendBtn" onclick="sendMessage()">
+                    <div class="header-text">
+                        <h1>MedBRAIN AI</h1>
+                        <p class="subtitle">Medical Assistant</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h2 class="hero-title">MedBRAIN AI</h2>
+                <p class="hero-subtitle">Your intelligent medical assistant powered by advanced AI</p>
+            </div>
+        </section>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <!-- Medical Disclaimer Banner -->
+            <div class="disclaimer-banner">
+                <div class="disclaimer-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="disclaimer-text">
+                    <strong>Medical Disclaimer:</strong> MedBRAIN AI is for educational purposes only. It does NOT provide medical advice, diagnosis, or treatment. Always consult licensed healthcare professionals.
+                </div>
+                <button class="disclaimer-close" onclick="this.parentElement.style.display='none'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Quick Question Suggestions -->
+            <div class="suggestions-container" id="suggestionsContainer">
+                <button class="suggestion-chip" onclick="sendSuggestion(this.textContent)">
+                    What are the symptoms of diabetes?
+                </button>
+                <button class="suggestion-chip" onclick="sendSuggestion(this.textContent)">
+                    How can I manage high blood pressure?
+                </button>
+                <button class="suggestion-chip" onclick="sendSuggestion(this.textContent)">
+                    What are the common causes of headaches?
+                </button>
+                <button class="suggestion-chip" onclick="sendSuggestion(this.textContent)">
+                    Explain the difference between bacteria and viruses
+                </button>
+                <button class="suggestion-chip" onclick="sendSuggestion(this.textContent)">
+                    What are the benefits of regular exercise?
+                </button>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div class="messages-container" id="chatMessages">
+                <!-- Messages will be dynamically inserted here -->
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="userInput" 
+                        class="message-input" 
+                        placeholder="Type your medical question..."
+                        maxlength="500"
+                    />
+                    <button id="sendBtn" class="send-button">
                         <i class="fas fa-paper-plane"></i>
                     </button>
+                </div>
             </div>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 MedBRAIN AI. For educational purposes only. Not a substitute for professional medical advice.</p>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="https://github.com/amalsp220/MedBRAIN-AI-Frontend" target="_blank">GitHub</a>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by RAG + LangChain + Groq • For educational purposes only</p>
+        </footer>
+    </div>
 
     <script src="app.js"></script>
 </body>
