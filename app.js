@@ -1,91 +1,42 @@
 // MedBRAIN AI - Frontend JavaScript
-// New Turquoise Theme - Connected to Hugging Face Backend
-// Rollback Code: 8123023
+// Purple Theme - Connected to Hugging Face Backend
 
 const API_BASE = "https://amalsp-medbrain-ai.hf.space";
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
-const suggestionsContainer = document.getElementById('suggestionsContainer');
-
+const typingIndicator = document.getElementById('typingIndicator');
 let conversationHistory = [];
-
-// Get current timestamp
-function getTimestamp() {
-    const now = new Date();
-    return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-}
 
 // Add message to chat
 function addMessage(text, isUser = false) {
     const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
+    messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
     
-    const avatar = document.createElement('div');
-    avatar.className = 'message-avatar';
-    avatar.innerHTML = isUser ? '<i class="fas fa-user"></i>' : '<i class="fas fa-brain"></i>';
+    const messageContent = document.createElement('div');
+    messageContent.className = 'message-content';
+    messageContent.textContent = text;
     
-    const content = document.createElement('div');
-    content.className = 'message-content';
-    
-    const messageText = document.createElement('div');
-    messageText.className = 'message-text';
-    messageText.textContent = text;
-    
-    const timeStamp = document.createElement('div');
-    timeStamp.className = 'message-time';
-    timeStamp.textContent = getTimestamp();
-    
-    content.appendChild(messageText);
-    content.appendChild(timeStamp);
-    messageDiv.appendChild(avatar);
-    messageDiv.appendChild(content);
-    
+    messageDiv.appendChild(messageContent);
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 // Show typing indicator
 function showTypingIndicator() {
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'message ai-message';
-    typingDiv.id = 'typing-indicator';
-    
-    const avatar = document.createElement('div');
-    avatar.className = 'message-avatar';
-    avatar.innerHTML = '<i class="fas fa-brain"></i>';
-    
-    const content = document.createElement('div');
-    content.className = 'message-content';
-    
-    const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'typing-indicator';
-    typingIndicator.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
-    
-    content.appendChild(typingIndicator);
-    typingDiv.appendChild(avatar);
-    typingDiv.appendChild(content);
-    
-    chatMessages.appendChild(typingDiv);
+    typingIndicator.classList.add('show');
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 // Remove typing indicator
 function removeTypingIndicator() {
-    const typingIndicator = document.getElementById('typing-indicator');
-    if (typingIndicator) {
-        typingIndicator.remove();
-    }
+    typingIndicator.classList.remove('show');
 }
 
 // Send message to API
 async function sendMessage(message) {
-    if (!message.trim()) return;
-    
-    // Hide suggestions after first message
-    if (conversationHistory.length === 0) {
-        suggestionsContainer.style.display = 'none';
-    }
+    if (!message) message = userInput.value.trim();
+    if (!message) return;
     
     // Add user message
     addMessage(message, true);
@@ -156,14 +107,12 @@ function sendSuggestion(text) {
 
 // Event Listeners
 sendBtn.addEventListener('click', () => {
-    const message = userInput.value;
-    sendMessage(message);
+    sendMessage();
 });
 
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-        const message = userInput.value;
-        sendMessage(message);
+        sendMessage();
     }
 });
 
