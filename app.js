@@ -128,3 +128,8 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log('MedBRAIN AI initialized');
     console.log('Connected to:', API_BASE);
 });
+
+
+// Make functions globally accessible for inline onclick handlers
+window.sendMessage = sendMessage;
+window.sendSuggestion = sendSuggestion;
