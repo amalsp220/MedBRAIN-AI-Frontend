@@ -145,4 +145,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Make functions globally accessible for inline onclick handlers
 window.sendMessage = sendMessage;
+
+                // New Chat button functionality
+const newChatBtn = document.getElementById('newChatBtn');
+if (newChatBtn) {
+    newChatBtn.addEventListener('click', function() {
+        // Clear chat messages
+        const firstMessage = chatMessages.querySelector('.message.bot');
+        chatMessages.innerHTML = '';
+        if (firstMessage) {
+            chatMessages.appendChild(firstMessage.cloneNode(true));
+        }
+        // Clear input
+        userInput.value = '';
+    });
+}
 window.sendSuggestion = sendSuggestion;
