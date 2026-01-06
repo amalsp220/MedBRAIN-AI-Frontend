@@ -46,11 +46,14 @@
             overflow: hidden;
         }
 
-        .chat-header {
+                66
+        
+        
             background: linear-gradient(90deg, var(--royal-violet), var(--lavender-purple));
             color: white;
             padding: 20px;
             text-align: center;
+                                position: relative;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -62,6 +65,29 @@
         .chat-header p {
             font-size: 14px;
             opacity: 0.9;
+        }
+
+                .new-chat-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--mauve);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .new-chat-btn:hover {
+            background: var(--lavender-purple);
+            transform: scale(1.1);
         }
 
         .chat-messages {
@@ -231,6 +257,7 @@
         <div class="chat-header">
             <h1>🧠 MedBRAIN AI</h1>
             <p>Your Intelligent Medical Assistant</p>
+                        <button class="new-chat-btn" id="newChatBtn" title="New Chat">+</button>
         </div>
 
         <div class="chat-messages" id="chatMessages">
