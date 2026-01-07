@@ -6,11 +6,9 @@ const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
 const typingIndicator = document.getElementById('typingIndicator');
-const suggestionsContainer = document.querySelector('.suggestions');
 let conversationHistory = [];
 
 // Add message to chat
-function addMessage(text, isUser = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
     
@@ -38,10 +36,6 @@ async function sendMessage(message) {
     if (!message) message = userInput.value.trim();
     if (!message) return;
 
-        // Hide suggestions after first interaction
-    if (suggestionsContainer) {
-        suggestionsContainer.style.display = 'none';
-    }
     
     // Add user message
     addMessage(message, true);
