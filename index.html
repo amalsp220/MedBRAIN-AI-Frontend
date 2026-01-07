@@ -271,34 +271,32 @@
                                                 MedBRAIN AI
             </h1>
                         <p style="color: white;">Your Intelligent Medical Assistant</p>
-                        <button class="new-chat-btn" id="newChatBtn" title="New Chat">+</button>
-                            <div style="display: flex; align-items: center; gap: 12px;">
-                                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                                <!-- Gradient definitions -->
-                                                                                <defs>
-                                                                                                                <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                                                                                                                    <stop offset="0%" style="stop-color:#E0AAFF;stop-opacity:1" />
-                                                                                                                                                    <stop offset="100%" style="stop-color:#C77DFF;stop-opacity:1" />
-                                                                                                                                                </linearGradient>
-                                                                                                            </defs>
-                                                                                <!-- Brain shape -->
-                                                                                <path d="M24 6C17.373 6 12 11.373 12 18C12 19.639 12.368 21.193 13.023 22.585C12.368 23.976 12 25.531 12 27.167C12 33.794 17.373 39.167 24 39.167C30.627 39.167 36 33.794 36 27.167C36 25.531 35.632 23.976 34.977 22.585C35.632 21.193 36 19.639 36 18C36 11.373 30.627 6 24 6Z" stroke="url(#brainGradient)" stroke-width="3" fill="none"/>
-                                                                                <!-- Medical cross -->
-                                                                                <rect x="21" y="14" width="6" height="20" rx="1" fill="#C77DFF"/>
-                                                                                <rect x="14" y="21" width="20" height="6" rx="1" fill="#C77DFF"/>
-                                                                                <!-- Pulse line -->
-                                                                                <path d="M12 24 L16 24 L18 20 L20 28 L22 24 L36 24" stroke="#9D4EDD" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                                <!-- Neural dots -->
-                                                                                <circle cx="16" cy="14" r="2" fill="#9D4EDD"/>
-                                                                                <circle cx="32" cy="14" r="2" fill="#9D4EDD"/>
-                                                                                <circle cx="16" cy="34" r="2" fill="#9D4EDD"/>
-                                                                                <circle cx="32" cy="34" r="2" fill="#9D4EDD"/>
-                                                                            </svg>
-                                                </div>
-                            </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
-270
-                            
+                        <button class="new-chat-btn" id="newChatBtn" title="New Chat">+</button>            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Gradient definitions -->
+                        <defs>
+                            <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#E0AAFF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#C77DFF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Brain shape -->
+                        <path d="M24 6C17.373 6 12 11.373 12 18C12 19.639 12.368 21.193 13.023 22.585C12.368 23.976 12 25.531 12 27.169C12 33.796 17.373 39.169 24 39.169C30.627 39.169 36 33.796 36 27.169C36 25.531 35.632 23.976 34.977 22.585C35.632 21.193 36 19.639 36 18C36 11.373 30.627 6 24 6Z" stroke="url(#brainGradient)" stroke-width="3" fill="none"/>
+                        <!-- Medical cross -->
+                        <rect x="21" y="14" width="6" height="20" rx="1" fill="#C77DFF"/>
+                        <rect x="14" y="21" width="20" height="6" rx="1" fill="#C77DFF"/>
+                        <!-- Pulse line -->
+                        <path d="M12 24 L16 24 L18 20 L20 28 L22 24 L36 24" stroke="#9D4EDD" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- Neural dots -->
+                        <circle cx="16" cy="14" r="2" fill="#9D4EDD"/>
+                        <circle cx="32" cy="14" r="2" fill="#9D4EDD"/>
+                        <circle cx="16" cy="34" r="2" fill="#9D4EDD"/>
+                        <circle cx="32" cy="34" r="2" fill="#9D4EDD"/>
+                    </svg>
+            </div>
+        </div>
+
         <div class="chat-messages" id="chatMessages">
             <div class="message bot">
                 <div class="message-content">
