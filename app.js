@@ -9,6 +9,7 @@ const typingIndicator = document.getElementById('typingIndicator');
 let conversationHistory = [];
 
 // Add message to chat
+function addMessage(text, isUser = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
     
@@ -35,7 +36,6 @@ function removeTypingIndicator() {
 async function sendMessage(message) {
     if (!message) message = userInput.value.trim();
     if (!message) return;
-
     
     // Add user message
     addMessage(message, true);
@@ -158,10 +158,6 @@ if (newChatBtn) {
         }
         // Clear input
         userInput.value = '';
-                // Show suggestions again
-        if (suggestionsContainer) {
-            suggestionsContainer.style.display = 'flex';
-        }
     });
 }
 window.sendSuggestion = sendSuggestion;
